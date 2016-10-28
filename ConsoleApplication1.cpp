@@ -1,4 +1,3 @@
-#pragma warning(disable:4996)
 // ConsoleApplication1.cpp : Defines the entry point for the console application.
 //
 // Nicolas Tsagarides
@@ -27,8 +26,7 @@ enum validation { INVALID, TWOLEFT, ONELEFT, TWORIGHT, ONERIGHT };
 class State
 {
 public:
-	int size;
-	static Field GameField[3];
+	Field GameField[7];
 	State* parent;
 	int derivedFromOperation = -1; // -1 means no operation was performed
 	Field DirectionOfParent;
@@ -49,7 +47,6 @@ int main(int argc, char const *argv[])
 	Field startingState[] = { LeftFrog, LeftFrog, LeftFrog, EMPTY, RightFrog, RightFrog, RightFrog }; // This is the starting state
 	Field acceptedState[] = { RightFrog, RightFrog, RightFrog, EMPTY, LeftFrog, LeftFrog, LeftFrog }; // This is the goal
 
-	State.
 	stack <State> open; // OPEN stack
 	stack <State> close; // CLOSE stack
 	stack <State> expandedStates; // temporary stack to put the expanded states before pushing them in the open stack
@@ -86,7 +83,7 @@ int main(int argc, char const *argv[])
 			}
 
 			cout << "Jumps as follows:\n";
-
+			
 			solutionPath.pop(); // discard the first node from the stack since its the root node
 
 			while (!solutionPath.empty())
@@ -273,3 +270,4 @@ bool nodeAlreadyExpanded(Field la[], stack <State> st) // check if the state alr
 	}
 	return false;
 }
+
